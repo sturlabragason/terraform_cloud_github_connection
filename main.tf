@@ -25,4 +25,7 @@ resource "tfe_workspace" "workspace" {
     branch         = var.branch
     oauth_token_id = length(var.oauth_token_id) > 0 ? var.oauth_token_id : tfe_oauth_client.oauth[0].oauth_token_id
   }
+  depends_on = [
+      tfe_oauth_client.oauth,
+  ]
 }
