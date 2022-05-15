@@ -22,6 +22,6 @@ resource "tfe_workspace" "test" {
   vcs_repo {
     identifier     = var.identifier
     branch         = var.branch
-    oauth_token_id = length(var.oauth_token_id) > 0 ? var.oauth_token_id : tfe_oauth_client.oauth.oauth_token_id
+    oauth_token_id = length(var.oauth_token_id) > 0 ? var.oauth_token_id : tfe_oauth_client.oauth[0].oauth_token_id
   }
 }
