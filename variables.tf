@@ -14,9 +14,9 @@ variable "gh_token" {
 }
 
 variable "oauth_token_id" {
-  type        = number
+  type        = string
   description = "(optional) describe your variable"
-  default     = 0
+  default     = ""
 }
 
 variable "repository" {
