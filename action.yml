@@ -1,4 +1,4 @@
-name: 'terraform_state_artifact'
+name: 'terraform_cloud_github_connection'
 description: 'Creates a Terraform Cloud Workspace and connects it to your Github repository'
 author: 'Sturla Bragason'
 inputs:
