@@ -19,7 +19,17 @@ variable "oauth_token_id" {
   default = 0
 }
 
-variable "workspace_name" {
+variable "repository" {
+  type        = string
+  description = "(optional) describe your variable"
+}
+
+variable "branch" {
+  type        = string
+  description = "(optional) describe your variable"
+}
+
+variable "workspace" {
   type        = string
   description = "(optional) describe your variable"
 }

@@ -1,5 +1,5 @@
 locals {
-  name = var.workspace_name
+  name = "${var.repository}-${var.branch}-${var.workspace}"
 }
 
 data "tfe_organization" "org" {
@@ -16,7 +16,7 @@ resource "tfe_oauth_client" "oauth" {
   service_provider = "github"
 }
 
-resource "tfe_workspace" "test" {
+resource "tfe_workspace" "workspace" {
   name         = local.name
   organization = data.tfe_organization.org.name
   vcs_repo {
