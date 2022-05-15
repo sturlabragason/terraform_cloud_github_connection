@@ -13,7 +13,7 @@ jobs:
     name: Using terraform_cloud_github_connection
     steps:
       - id: terraform_cloud_github_connection
-        uses: sturlabragason/terraform_cloud_github_connection
+        uses: sturlabragason/terraform_cloud_github_connection@v1
         with:
           gh_token: ${{ secrets.gh_token }}
           tfe_token: ${{ secrets.tfe_token }}
