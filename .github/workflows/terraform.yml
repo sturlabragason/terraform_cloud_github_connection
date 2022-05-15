@@ -1,0 +1,20 @@
+name: Terraform State Artifact
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron:  '11 11 11 * *'
+
+
+jobs:
+  terraform_download_job:
+    runs-on: ubuntu-latest
+    name: Using terraform_cloud_github_connection
+    steps:
+      - id: terraform_cloud_github_connection
+        uses: sturlabragason/terraform_cloud_github_connection
+        with:
+          gh_token: ${{ secrets.gh_token }}
+          tfe_token: ${{ secrets.tfe_token }}
+          tfe_org: "sturlabragason"

@@ -1,0 +1,8 @@
+terraform {
+  cloud {
+    organization = "__tfe_org__"
+    workspaces {
+      name = "__workspace_name__"
+    }
+  }
+}

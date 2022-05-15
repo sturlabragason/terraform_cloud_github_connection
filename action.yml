@@ -1,0 +1,34 @@
+name: 'terraform_state_artifact'
+description: 'Creates a Terraform Cloud Workspace and connects it to your Github repository'
+author: 'Sturla Bragason'
+inputs:
+  gh_token:
+    description: 'Your Github personal access token.'
+    required: true
+  tfe_token:
+    description: 'Your Terraform Cloud token.'
+    required: true
+  tfe_org:
+    description: 'The name of your Terraform Cloud Organization.'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+      with:
+        repository: ${{ github.action_repository }}
+    - id: terraform
+      run: |
+        terraform init
+        terraform apply --auto-approve
+        pwsh -c "(Get-Content ./providers.tf.disconnected) -replace "__tfe_org__","${{ inputs.tfe_org }}" -replace "__workspace_name__","workspace" | Out-File ./providers.tf"
+        terraform init
+        terraform apply --auto-approve           
+      env:
+        TF_VAR_tfe_org: ${{ inputs.tfe_org }}
+        TF_VAR_gh_token: ${{ inputs.gh_token }}
+        TF_VAR_tfe_token: ${{ inputs.tfe_token }}
+        TF_VAR_workspace_name: "${{ github.repository }}${{ github.workspace }}"
+branding:
+  icon: 'cloud'
+  color: 'gray-dark'
