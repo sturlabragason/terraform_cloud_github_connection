@@ -1,6 +1,6 @@
 locals {
   name = "${replace(var.repository, "/", "-")}-${var.branch}"
-  
+
 }
 
 data "tfe_organization" "org" {
@@ -26,6 +26,6 @@ resource "tfe_workspace" "workspace" {
     oauth_token_id = length(var.oauth_token_id) > 0 ? var.oauth_token_id : tfe_oauth_client.oauth[0].oauth_token_id
   }
   depends_on = [
-      tfe_oauth_client.oauth,
+    tfe_oauth_client.oauth,
   ]
 }
