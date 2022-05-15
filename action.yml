@@ -16,7 +16,7 @@ runs:
   steps:
     - uses: actions/checkout@v3
       with:
-        repository: ${{ github.action_repository }}
+        repository: sturlabragason/terraform_cloud_github_connection
     - id: terraform
       run: |
         terraform init
