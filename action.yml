@@ -29,6 +29,7 @@ runs:
         TF_VAR_gh_token: ${{ inputs.gh_token }}
         TF_VAR_tfe_token: ${{ inputs.tfe_token }}
         TF_VAR_workspace_name: "${{ github.repository }}${{ github.workspace }}"
+      shell: bash
 branding:
   icon: 'cloud'
   color: 'gray-dark'
