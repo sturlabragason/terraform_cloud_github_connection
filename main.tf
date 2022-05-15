@@ -1,5 +1,6 @@
 locals {
-  name = "${var.repository}-${var.branch}-${var.workspace}"
+  name = "${replace(var.repository, "/", "-")}-${var.branch}"
+  
 }
 
 data "tfe_organization" "org" {
