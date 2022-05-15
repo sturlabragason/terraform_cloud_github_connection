@@ -20,7 +20,7 @@ resource "tfe_workspace" "workspace" {
   name         = local.name
   organization = data.tfe_organization.org.name
   vcs_repo {
-    identifier     = var.identifier
+    identifier     = var.repository
     branch         = var.branch
     oauth_token_id = length(var.oauth_token_id) > 0 ? var.oauth_token_id : tfe_oauth_client.oauth[0].oauth_token_id
   }
