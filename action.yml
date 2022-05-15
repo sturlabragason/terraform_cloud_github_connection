@@ -21,7 +21,7 @@ runs:
       run: |
         terraform init
         terraform apply --auto-approve
-        pwsh -c "(Get-Content ./providers.tf.disconnected) -replace "__tfe_org__","${{ inputs.tfe_org }}" -replace "__workspace_name__","workspace" | Out-File ./providers.tf"
+        pwsh -c "(Get-Content ./providers.tf.disconnected) -replace "__tfe_org__","${{ inputs.tfe_org }}" -replace "__workspace_name__","workspace" | Out-File ./override.tf"
         terraform init
         terraform apply --auto-approve           
       env:

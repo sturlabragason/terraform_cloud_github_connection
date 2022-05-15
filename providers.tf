@@ -1,8 +1,3 @@
-terraform {
-  cloud {
-    organization = "org"
-    workspaces {
-      name = "workspace"
-    }
-  }
+provider "tfe" {
+  token    = var.tfe_token
 }
